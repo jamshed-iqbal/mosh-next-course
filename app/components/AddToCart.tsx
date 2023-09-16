@@ -2,6 +2,6 @@
 
 export default function AddToCart() {
   return (
-    <button type="button" onClick={() => console.log("Clicked")}>Add to Cart</button>
+    <button type="button" className="btn btn-primary" onClick={() => console.log("Clicked")}>Add to Cart</button>
   );
 }
