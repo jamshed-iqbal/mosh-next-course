@@ -1,5 +1,16 @@
+"use client";
+import { useRouter } from "next/navigation";
+
 export default function NewUserPage() {
+  const router = useRouter();
+
+  function handleCreate() {
+    router.push("/users");
+  }
+
   return (
-    <h1>This is new user page</h1>
+    <div>
+      <button className="btn btn-primary" onClick={handleCreate}>Create</button>
+    </div>
   );
 }

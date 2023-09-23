@@ -1,6 +1,8 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Navbar from './Navbar'
+// import { Suspense } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +18,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme="winter">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="flex flex-col min-h-screen">
+          <Navbar />
+          <main className="p-5 flex-grow flex flex-col">
+            {/* <Suspense fallback={<p>Loading...</p>}> */}
+              {children}
+            {/* </Suspense> */}
+          </main>
+        </div>
+      </body>
     </html>
   )
 }
