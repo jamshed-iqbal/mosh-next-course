@@ -14,6 +14,7 @@ export default function Navbar() {
         <>
           <Link href="/">Home</Link>
           <Link href="/users">Users</Link>
+          <Link href="/image">Image</Link>
           <Link href="/admin">Admin</Link>
           {status === "unauthenticated" && (
             <Link href="/api/auth/signin">Login</Link>
