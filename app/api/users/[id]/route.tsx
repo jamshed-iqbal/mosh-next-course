@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import schema from "@/app/api/users/schema";
-import prisma from "@/prisma/client";
+import { prisma } from "@/prisma/client";
 
 interface Props {
   params: { id: string };
@@ -10,8 +10,8 @@ interface Props {
 export async function GET(request: NextRequest, { params: { id } }: Props) {
   const user = await prisma.user.findUnique({
     where: {
-      id: parseInt(id),
-    }
+      id,
+    },
   });
 
   if (user == null) {
@@ -30,7 +30,7 @@ export async function PUT(request: NextRequest, { params }: Props) {
     return NextResponse.json(validation.error.errors, { status: 400 });
   }
 
-  const id = parseInt(params.id);
+  const id = params.id;
 
   const user = await prisma.user.findUnique({
     where: {
@@ -56,7 +56,7 @@ export async function PUT(request: NextRequest, { params }: Props) {
 }
 
 export async function DELETE(request: NextRequest, { params }: Props) {
-  const id = parseInt(params.id);
+  const id = params.id;
 
   const user = await prisma.user.findUnique({
     where: {

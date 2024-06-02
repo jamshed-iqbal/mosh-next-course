@@ -1,5 +1,7 @@
 // Note that this route to send email is NOT working but this is how we send emails via resend
 
+"use client";
+
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import WelcomeTemplate from "@/emails/WelcomeTemplate";

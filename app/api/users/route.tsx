@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import schema from "@/app/api/users/schema";
-import prisma from "@/prisma/client";
+import { prisma } from "@/prisma/client";
 
 export async function GET(request: NextRequest) {
   const users = await prisma.user.findMany();
@@ -29,7 +29,10 @@ export async function POST(request: NextRequest) {
   });
 
   if (existingUser != null) {
-    return NextResponse.json({ error: `User with email "${body.email}" already exists` }, { status: 400 });
+    return NextResponse.json(
+      { error: `User with email "${body.email}" already exists` },
+      { status: 400 }
+    );
   }
 
   const user = await prisma.user.create({
